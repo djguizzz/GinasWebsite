@@ -1026,3 +1026,22 @@ main {
 .about-hero-single .about-hero-desc {
   max-width: 620px;
 }
+
+/* Clean Frameless Hero Photo on About Page */
+.about-hero-photo {
+  aspect-ratio: 4 / 3.6;
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--bg-subtle);
+}
+
+.about-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-visit {
+  border-bottom: none;
+}
