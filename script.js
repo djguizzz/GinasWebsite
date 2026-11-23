@@ -305,7 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (serviceGrid) {
     const cards = Array.from(serviceGrid.querySelectorAll('.service-card'));
 
-    // 5a. Category Filter
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         filterBtns.forEach((b) => b.classList.remove('active'));
@@ -323,20 +322,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // 5b. Sorting Order (Number 01-10, A-Z, Z-A)
     if (serviceSort) {
       serviceSort.addEventListener('change', () => {
         const mode = serviceSort.value;
         const sorted = [...cards].sort((a, b) => {
           if (mode === 'az') {
-            const titleA = a.querySelector('h3').textContent.trim();
-            const titleB = b.querySelector('h3').textContent.trim();
-            return titleA.localeCompare(titleB);
+            return a.querySelector('h3').textContent.trim().localeCompare(b.querySelector('h3').textContent.trim());
           }
           if (mode === 'za') {
-            const titleA = a.querySelector('h3').textContent.trim();
-            const titleB = b.querySelector('h3').textContent.trim();
-            return titleB.localeCompare(titleA);
+            return b.querySelector('h3').textContent.trim().localeCompare(a.querySelector('h3').textContent.trim());
           }
           return Number(a.getAttribute('data-index')) - Number(b.getAttribute('data-index'));
         });
@@ -345,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 5c. Service Detail Data (Explanation + 3 Sample Images per Service)
     const serviceDetails = {
       'event-coverage': {
         num: 'SERVICE 01 • EVENTS',
@@ -492,9 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     cards.forEach((card) => {
-      card.addEventListener('click', () => {
-        openServiceModal(card.getAttribute('data-service'));
-      });
+      card.addEventListener('click', () => openServiceModal(card.getAttribute('data-service')));
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -511,17 +502,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeServiceModal();
       }
     });
-
-    // 5d. Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-          event.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
   }
 
   /* ================= 6. GALLERY PAGE: FILTER, VIEW TOGGLE & LIGHTBOX ================= */
@@ -536,7 +516,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let visibleItems = [...galleryItems];
     let currentLightboxIndex = 0;
 
-    // 6a. Category Filter
     galFilterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         galFilterBtns.forEach((b) => b.classList.remove('active'));
@@ -556,7 +535,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // 6b. Masonry vs Uniform Grid View Switcher
     if (viewMasonry && viewUniform) {
       viewMasonry.addEventListener('click', () => {
         galleryGrid.classList.remove('is-uniform');
@@ -571,7 +549,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 6c. Fullscreen Lightbox Viewer
     const lbImage = document.getElementById('lightboxImage');
     const lbCategory = document.getElementById('lightboxCategory');
     const lbTitle = document.getElementById('lightboxTitle');
@@ -645,64 +622,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ================= 7. CONTACT PAGE: QUOTATION BUILDER (GMAIL & MESSENGER) ================= */
-  const quotationForm = document.getElementById('quotationForm');
-  const copyMessengerBtn = document.getElementById('copyMessengerBtn');
-  const formFeedback = document.getElementById('formFeedback');
+  /* ================= 7. CONTACT PAGE: CLIENT-SIDE FORM VALIDATION ================= */
+  const contactForm = document.getElementById('contactValidationForm');
+  const statusMsg = document.getElementById('formStatusMsg');
 
-  if (quotationForm) {
-    function buildInquiryMessage() {
-      const name = document.getElementById('clientName').value.trim();
-      const phone = document.getElementById('clientPhone').value.trim();
-      const service = document.getElementById('serviceSelect').value;
-      const date = document.getElementById('eventDate').value || 'Flexible / To be discussed';
-      const venue = document.getElementById('eventVenue').value.trim() || 'In-Studio / Iloilo City';
-      const notes = document.getElementById('clientMessage').value.trim();
-
-      return {
-        service,
-        text:
-          `Hello Gina's Photo & Video Services,\n\n` +
-          `I would like to request a quotation for:\n` +
-          `• Service: ${service}\n` +
-          `• Preferred Date: ${date}\n` +
-          `• Location/Venue: ${venue}\n` +
-          `• Client Name: ${name}\n` +
-          `• Contact Number: ${phone}\n\n` +
-          `Additional Details:\n${notes}\n\nThank you!`
-      };
-    }
-
-    quotationForm.addEventListener('submit', (e) => {
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const inquiry = buildInquiryMessage();
-      const subject = encodeURIComponent(`Quotation Request: ${inquiry.service}`);
-      const body = encodeURIComponent(inquiry.text);
+      const nameInput = document.getElementById('inqName');
+      const emailInput = document.getElementById('inqEmail');
+      const serviceInput = document.getElementById('inqService');
 
-      if (formFeedback) {
-        formFeedback.textContent = 'Opening your email app with your formatted quotation request...';
+      [nameInput, emailInput, serviceInput].forEach((el) => el.classList.remove('input-error'));
+      statusMsg.classList.remove('is-error');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const service = serviceInput.value;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (name.length < 2) {
+        nameInput.classList.add('input-error');
+        statusMsg.classList.add('is-error');
+        statusMsg.textContent = 'Please enter your full name (at least 2 characters).';
+        nameInput.focus();
+        return;
       }
+
+      if (!emailPattern.test(email)) {
+        emailInput.classList.add('input-error');
+        statusMsg.classList.add('is-error');
+        statusMsg.textContent = 'Please enter a valid email address (e.g., name@email.com).';
+        emailInput.focus();
+        return;
+      }
+
+      if (!service) {
+        serviceInput.classList.add('input-error');
+        statusMsg.classList.add('is-error');
+        statusMsg.textContent = 'Please select the service you are inquiring about.';
+        serviceInput.focus();
+        return;
+      }
+
+      statusMsg.textContent = `Validated! Preparing email draft for ${service}...`;
+      const subject = encodeURIComponent(`Inquiry: ${service} (${name})`);
+      const body = encodeURIComponent(`Hello Gina's Photo & Video Services,\n\nName: ${name}\nEmail: ${email}\nService Needed: ${service}\n\nPlease share your available dates and quotation. Thank you!`);
       window.location.href = `mailto:gina.photovidservices@gmail.com?subject=${subject}&body=${body}`;
     });
-
-    if (copyMessengerBtn) {
-      copyMessengerBtn.addEventListener('click', () => {
-        if (!quotationForm.checkValidity()) {
-          quotationForm.reportValidity();
-          return;
-        }
-        const inquiry = buildInquiryMessage();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(inquiry.text).then(() => {
-            if (formFeedback) {
-              formFeedback.textContent = 'Inquiry copied to clipboard! Opening Messenger—just paste and send.';
-            }
-            window.open('https://m.me/', '_blank', 'noopener,noreferrer');
-          });
-        } else if (formFeedback) {
-          formFeedback.textContent = 'Please copy your details and message us on Facebook Messenger.';
-        }
-      });
-    }
   }
 });
