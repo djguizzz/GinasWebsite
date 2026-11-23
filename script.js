@@ -1,33 +1,33 @@
-/* ================= 1. THEME TOGGLE (DARK / LIGHT MODE) ================= */
+/* ================= 1. THEME TOGGLE (LIGHT / DARK EDITORIAL MODE) ================= */
 (function initTheme() {
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
   const themeLabel = document.getElementById('themeLabel');
 
-  // Check saved preference in localStorage (defaults to dark)
-  const savedTheme = localStorage.getItem('ginas-theme') || 'dark';
+  // Default to crisp Editorial Light mode unless user chose Dark
+  const savedTheme = localStorage.getItem('ginas-editorial-theme') || 'light';
   applyTheme(savedTheme);
 
   function applyTheme(theme) {
-    if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
-      if (themeIcon) themeIcon.innerHTML = '&#9790;'; // Moon icon
-      if (themeLabel) themeLabel.textContent = 'Dark';
-      if (themeToggle) themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    } else {
-      root.removeAttribute('data-theme');
+    if (theme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
       if (themeIcon) themeIcon.innerHTML = '&#9788;'; // Sun icon
       if (themeLabel) themeLabel.textContent = 'Light';
       if (themeToggle) themeToggle.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+      root.removeAttribute('data-theme');
+      if (themeIcon) themeIcon.innerHTML = '&#9790;'; // Moon icon
+      if (themeLabel) themeLabel.textContent = 'Dark';
+      if (themeToggle) themeToggle.setAttribute('aria-label', 'Switch to dark mode');
     }
   }
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const isLight = root.getAttribute('data-theme') === 'light';
-      const nextTheme = isLight ? 'dark' : 'light';
-      localStorage.setItem('ginas-theme', nextTheme);
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const nextTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem('ginas-editorial-theme', nextTheme);
       applyTheme(nextTheme);
     });
   }
@@ -43,7 +43,6 @@ if (nav && menuToggle) {
     menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // Close mobile menu when any nav link is clicked
   nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('show');
@@ -52,96 +51,71 @@ if (nav && menuToggle) {
   });
 }
 
-/* ================= 3. HOME PAGE HERO CAROUSEL ================= */
-if (document.getElementById('dots') && document.getElementById('home')) {
-  const slides = document.querySelectorAll('.slide');
-  const dotsWrap = document.getElementById('dots');
-  const hero = document.getElementById('home');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-
-  let current = 0;
-  let timer;
-
-  // Build pagination dots dynamically
-  slides.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'dot' + (index === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
-    dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
-
-    dot.addEventListener('click', () => {
-      goTo(index);
-      restart();
-    });
-
-    dotsWrap.appendChild(dot);
-  });
-
-  const dots = dotsWrap.querySelectorAll('.dot');
-
-  function goTo(index) {
-    slides[current].classList.remove('active');
-    slides[current].setAttribute('aria-hidden', 'true');
-    dots[current].classList.remove('active');
-    dots[current].setAttribute('aria-current', 'false');
-
-    current = (index + slides.length) % slides.length;
-
-    slides[current].classList.add('active');
-    slides[current].setAttribute('aria-hidden', 'false');
-    dots[current].classList.add('active');
-    dots[current].setAttribute('aria-current', 'true');
-  }
-
-  function restart() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 5000);
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      goTo(current + 1);
-      restart();
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      goTo(current - 1);
-      restart();
-    });
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', event => {
-    if (event.key === 'ArrowRight') {
-      goTo(current + 1);
-      restart();
-    } else if (event.key === 'ArrowLeft') {
-      goTo(current - 1);
-      restart();
+/* ================= 3. EDITORIAL LOOKBOOK PLATE SWITCHER ================= */
+const plateImage = document.getElementById('plateImage');
+if (plateImage) {
+  const plates = [
+    {
+      num: 'PLATE 01 / 04',
+      category: 'FAMILY PORTRAITURE',
+      src: 'Images/example1-hd-upscale.jpg',
+      alt: 'Family portrait captured by Gina’s Photo & Video Services',
+      caption: 'Generational portraits captured in natural light and timeless studio compositions.'
+    },
+    {
+      num: 'PLATE 02 / 04',
+      category: 'STUDIO & ON-LOCATION',
+      src: 'Images/example2-hd-upscale.jpg',
+      alt: 'Studio and on-location portrait session',
+      caption: 'Tailored sessions for individuals, couples, and families of every size.'
+    },
+    {
+      num: 'PLATE 03 / 04',
+      category: 'ACADEMIC MILESTONES',
+      src: 'Images/example3-hd-upscale.jpg',
+      alt: 'School photos and graduation portraits',
+      caption: 'Class pictures, official IDs, and graduation portraits delivered on time.'
+    },
+    {
+      num: 'PLATE 04 / 04',
+      category: 'EVENTS & CINEMA',
+      src: 'Images/example4-hd-upscale.jpg',
+      alt: 'Wedding and celebration videography',
+      caption: 'Weddings, debuts, and celebrations filmed and edited to relive every chapter.'
     }
+  ];
+
+  let currentPlate = 0;
+  const plateNumber = document.getElementById('plateNumber');
+  const plateCategory = document.getElementById('plateCategory');
+  const plateCaption = document.getElementById('plateCaption');
+  const prevPlate = document.getElementById('prevPlate');
+  const nextPlate = document.getElementById('nextPlate');
+
+  function renderPlate(index) {
+    currentPlate = (index + plates.length) % plates.length;
+    const item = plates[currentPlate];
+
+    plateImage.style.opacity = '0.2';
+    setTimeout(() => {
+      plateImage.src = item.src;
+      plateImage.alt = item.alt;
+      if (plateNumber) plateNumber.textContent = item.num;
+      if (plateCategory) plateCategory.textContent = item.category;
+      if (plateCaption) plateCaption.textContent = item.caption;
+      plateImage.style.opacity = '1';
+    }, 150);
+  }
+
+  if (prevPlate) prevPlate.addEventListener('click', () => renderPlate(currentPlate - 1));
+  if (nextPlate) nextPlate.addEventListener('click', () => renderPlate(currentPlate + 1));
+
+  // Clicking any Contact Sheet card loads that photo into the top Lookbook Plate & scrolls up
+  document.querySelectorAll('.sheet-card[data-plate]').forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = Number(card.getAttribute('data-plate'));
+      renderPlate(idx);
+      document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+    });
   });
-
-  // Touch swipe support for mobile
-  let startX = 0;
-  hero.addEventListener('touchstart', event => {
-    startX = event.touches[0].clientX;
-  }, { passive: true });
-
-  hero.addEventListener('touchend', event => {
-    const difference = event.changedTouches[0].clientX - startX;
-    if (Math.abs(difference) > 50) {
-      goTo(current + (difference < 0 ? 1 : -1));
-      restart();
-    }
-  });
-
-  // Pause auto-slide on hover
-  hero.addEventListener('mouseenter', () => clearInterval(timer));
-  hero.addEventListener('mouseleave', restart);
-
-  restart();
 }
