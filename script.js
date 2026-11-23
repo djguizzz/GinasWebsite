@@ -142,13 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Pause slideshow while hovering over the photo frame
     if (plateFrame) {
       plateFrame.addEventListener('mouseenter', stopAutoSlide);
       plateFrame.addEventListener('mouseleave', startAutoSlide);
     }
 
-    // Contact sheet cards load the selected photo into the top Lookbook Plate
     document.querySelectorAll('.sheet-card[data-plate]').forEach((card) => {
       card.addEventListener('click', () => {
         const idx = Number(card.getAttribute('data-plate'));
@@ -161,13 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Kick off automatic 2.5s slideshow
     startAutoSlide();
   }
 
   /* ================= 4. ABOUT PAGE INTERACTIONS ================= */
   if (document.body.classList.contains('about-page')) {
-    // 4a. Staggered hero entrance
     document.querySelectorAll('.hero-item').forEach((item) => {
       const order = Number(item.style.getPropertyValue('--i')) || 0;
       item.style.opacity = '0';
@@ -183,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     });
 
-    // 4b. Scroll reveal for sections
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && reveals.length) {
       const revealObserver = new IntersectionObserver(
@@ -207,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 4c. Dynamic years counter (since 1989)
     const years = new Date().getFullYear() - 1989;
     const yearsCount = document.getElementById('yearsCount');
     const factYears = document.getElementById('factYears');
@@ -230,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
       counter.observe(factYears);
     }
 
-    // 4d. Interactive Tabs ("Our Clients" / "Events We Cover")
     const tabs = Array.from(document.querySelectorAll('.about-tab'));
     const panels = document.querySelectorAll('.about-tabpanel');
 
@@ -277,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // 4e. Subtle sideways watermark motion
     const watermark = document.getElementById('serveWatermark');
     const serveSection = document.getElementById('who-we-serve');
     if (watermark && serveSection) {
@@ -293,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
 
-    // 4f. Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (event) => {
         const target = document.querySelector(link.getAttribute('href'));
@@ -305,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-/* ================= 5. SERVICES PAGE: FILTER, SORT & DETAIL MODAL ================= */
+  /* ================= 5. SERVICES PAGE: FILTER, SORT & DETAIL MODAL ================= */
   const serviceGrid = document.getElementById('serviceGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const serviceSort = document.getElementById('serviceSort');
@@ -487,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       serviceModal.classList.add('is-open');
+      serviceModal.style.display = 'flex';
       serviceModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
@@ -494,6 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeServiceModal() {
       if (!serviceModal) return;
       serviceModal.classList.remove('is-open');
+      serviceModal.style.display = 'none';
       serviceModal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
