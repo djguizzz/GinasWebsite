@@ -304,4 +304,38 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  /* ================= 5. SERVICES PAGE FILTER & SMOOTH SCROLL ================= */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const serviceCards = document.querySelectorAll('.service-card');
+
+  if (filterBtns.length && serviceCards.length) {
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selected = btn.getAttribute('data-filter');
+        serviceCards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (selected === 'all' || category === selected) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+
+    // Smooth scroll for anchor links on Services page
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
 });
