@@ -1,1 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Gina's Photo &amp; Video Services &bull; Iloilo City</title>
+  <!-- Google Fonts: Cinzel, Lora & Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Great+Vibes&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body class="about-page">
 
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="Images/Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services">
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Book a Session</a>
+      </nav>
+
+      <div class="nav-controls">
+        <!-- Theme Toggle (Light / Dark Mode) -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+          <span class="theme-icon" id="themeIcon">&#9790;</span>
+          <span class="theme-label" id="themeLabel">Dark</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          &#9776;
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <!-- ========== EDITORIAL ABOUT HERO ========== -->
+    <section class="about-hero" id="aboutHero">
+      <div class="container about-hero-grid">
+        <div class="about-hero-text">
+          <div class="editorial-meta hero-item" style="--i:0">
+            <span class="meta-issue">OUR HERITAGE &bull; SINCE 1989</span>
+            <span class="meta-line"></span>
+          </div>
+
+          <p class="about-script hero-item" style="--i:1">About Us</p>
+          <h1 class="hero-item" style="--i:2">
+            More Than Photography.<br>
+            <em>It's About Stories.</em>
+          </h1>
+
+          <p class="about-hero-desc hero-item" style="--i:3">
+            At Gina's Photo &amp; Video Services, we turn moments into timeless memories. With over <span id="yearsCount">37</span> years of experience, we are dedicated to capturing life's most beautiful chapters with passion, creativity, and care[cite: 5].
+          </p>
+
+          <div class="editorial-actions hero-item" style="--i:4">
+            <a href="#our-story" class="btn btn-primary">Read Our Story &darr;</a>
+            <a href="services.html" class="btn btn-editorial-outline">View Services</a>
+          </div>
+        </div>
+
+        <div class="about-hero-showcase hero-item" style="--i:2">
+          <div class="plate-frame">
+            <div class="plate-header">
+              <span>ARCHIVE &bull; ILOILO CITY</span>
+              <span>EST. JAN 30, 1989</span>
+            </div>
+            <div class="about-hero-photo" id="heroPhoto">
+              <img src="Images/about-hero.jpg" alt="A professional camera ready to capture an event" onerror="this.src='Images/example1-hd-upscale.jpg';">
+            </div>
+            <div class="plate-footer">
+              <p>A family-owned studio preserving Ilonggo celebrations for over three decades[cite: 5, 6].</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== OUR STORY ========== -->
+    <section class="about-story" id="our-story">
+      <div class="container">
+        <div class="about-story-grid">
+          <div class="reveal">
+            <span class="eyebrow">01 &mdash; Our Story</span>
+            <h2>A family business, built one memory at a time</h2>
+            <span class="about-line" aria-hidden="true"></span>
+          </div>
+
+          <div class="about-story-text reveal">
+            <p>
+              Gina's Photo &amp; Video Services began on <strong>January 30, 1989</strong> as a family-owned photography business in Iloilo City[cite: 5]. It was founded by <strong>Gina P. Lachica</strong>, and today it is run together with <strong>Erwin A. Portades</strong>[cite: 5, 6].
+            </p>
+            <p>
+              Since then, we have been part of the celebrations, milestones, and everyday occasions of Ilonggo families, from weddings and graduations to birthdays and family gatherings[cite: 6]. Our goal is simple: to make sure the moments that matter are kept safe and beautifully told[cite: 6].
+            </p>
+          </div>
+        </div>
+
+        <!-- Architectural Quick Facts Bar -->
+        <ul class="about-facts reveal" aria-label="Quick facts about the business">
+          <li>
+            <span class="about-fact-number" id="factYears">37+</span>
+            <span class="about-fact-label">Years of Experience</span>
+          </li>
+          <li>
+            <span class="about-fact-number">1989</span>
+            <span class="about-fact-label">Year We Opened</span>
+          </li>
+          <li>
+            <span class="about-fact-number">Family</span>
+            <span class="about-fact-label">Owned &amp; Operated</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== WHO WE SERVE ========== -->
+    <section class="about-serve" id="who-we-serve">
+      <span class="about-serve-watermark" id="serveWatermark" aria-hidden="true">Iloilo City</span>
+
+      <div class="container about-serve-inner">
+        <div class="about-serve-head reveal">
+          <div>
+            <span class="eyebrow">02 &mdash; Who We Serve</span>
+            <h2>Everyone with a moment worth keeping</h2>
+          </div>
+
+          <!-- Interactive Tabs -->
+          <div class="about-tabs" role="tablist" aria-label="Who we serve">
+            <button class="about-tab active" role="tab" id="tab-clients" aria-selected="true" aria-controls="panel-clients">Our Clients</button>
+            <button class="about-tab" role="tab" id="tab-events" aria-selected="false" aria-controls="panel-events" tabindex="-1">Events We Cover</button>
+          </div>
+        </div>
+
+        <!-- Panel 1: Clients -->
+        <div class="about-tabpanel active" id="panel-clients" role="tabpanel" aria-labelledby="tab-clients">
+          <ul class="about-tiles">
+            <li><span class="about-tile-num">01</span><span class="about-tile-name">Individuals</span></li>
+            <li><span class="about-tile-num">02</span><span class="about-tile-name">Families</span></li>
+            <li><span class="about-tile-num">03</span><span class="about-tile-name">Couples</span></li>
+            <li><span class="about-tile-num">04</span><span class="about-tile-name">Students</span></li>
+            <li><span class="about-tile-num">05</span><span class="about-tile-name">Schools &amp; Educational Institutions</span></li>
+            <li><span class="about-tile-num">06</span><span class="about-tile-name">Businesses</span></li>
+            <li><span class="about-tile-num">07</span><span class="about-tile-name">Event Organizers</span></li>
+          </ul>
+        </div>
+
+        <!-- Panel 2: Events -->
+        <div class="about-tabpanel" id="panel-events" role="tabpanel" aria-labelledby="tab-events">
+          <ul class="about-tiles">
+            <li><span class="about-tile-num">01</span><span class="about-tile-name">Weddings</span></li>
+            <li><span class="about-tile-num">02</span><span class="about-tile-name">Birthdays</span></li>
+            <li><span class="about-tile-num">03</span><span class="about-tile-name">Debuts</span></li>
+            <li><span class="about-tile-num">04</span><span class="about-tile-name">Graduations</span></li>
+            <li><span class="about-tile-num">05</span><span class="about-tile-name">School Events</span></li>
+            <li><span class="about-tile-num">06</span><span class="about-tile-name">Corporate Events</span></li>
+            <li><span class="about-tile-num">07</span><span class="about-tile-name">Family Gatherings</span></li>
+          </ul>
+        </div>
+
+        <p class="about-serve-note reveal">
+          <span class="about-pin" aria-hidden="true"></span>
+          Our service area is <strong>within Iloilo City</strong>[cite: 8].
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== BOOKING & VISIT DETAILS ========== -->
+    <section class="about-visit" id="visit-us">
+      <div class="container">
+        <div class="sheet-header reveal">
+          <div>
+            <span class="eyebrow">03 &mdash; Studio Directory</span>
+            <h2>Booking &amp; Visit Details</h2>
+          </div>
+          <a href="contact.html" class="editorial-link">Request a Quotation &rarr;</a>
+        </div>
+
+        <div class="about-visit-grid">
+          <!-- Left: How booking works -->
+          <div class="about-visit-card reveal">
+            <h3>Booking Information</h3>
+            <dl>
+              <dt>Appointments</dt>
+              <dd>We accept both appointments and walk-ins. Advance booking depends on our availability[cite: 8].</dd>
+              <dt>Reservation</dt>
+              <dd>A down payment or reservation fee is required[cite: 8].</dd>
+              <dt>Payment Methods</dt>
+              <dd>Cash, GCash, and Bank Transfer[cite: 8].</dd>
+              <dt>Prices</dt>
+              <dd>Prices are not listed online. Inquire with us for a quotation[cite: 8].</dd>
+            </dl>
+          </div>
+
+          <!-- Right: Where to find us -->
+          <div class="about-visit-card reveal">
+            <h3>Visit &amp; Contact Us</h3>
+            <dl>
+              <dt>Address</dt>
+              <dd>Brgy. Rizal, La Paz, Iloilo City[cite: 9]</dd>
+              <dt>Open Hours</dt>
+              <dd>9:00 AM &ndash; 5:00 PM[cite: 9]</dd>
+              <dt>Call or Text</dt>
+              <dd>
+                <a href="tel:09303239145">0930 323 9145</a> /
+                <a href="tel:09483277158">0948 327 7158</a>[cite: 9]
+              </dd>
+              <dt>Email</dt>
+              <dd><a href="mailto:gina.photovidservices@gmail.com">gina.photovidservices@gmail.com</a>[cite: 9]</dd>
+              <dt>Other Channels</dt>
+              <dd>Facebook Messenger, our Facebook page, or walk in anytime during studio hours[cite: 9].</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CALL TO ACTION ========== -->
+    <section class="about-cta">
+      <div class="container about-cta-inner reveal">
+        <span class="eyebrow">Start Your Chapter</span>
+        <h2>Let's tell your story together</h2>
+        <p>Tell us about your event and we'll get back to you with availability and a personalized quotation[cite: 9].</p>
+        <div class="about-cta-buttons">
+          <a href="contact.html" class="btn btn-primary">Send an Inquiry</a>
+          <a href="services.html" class="btn btn-editorial-outline">View Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="Images/Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services Logo" class="footer-logo">
+        <p>Turning moments into timeless memories with over 37 years of experience in photography and videography[cite: 5, 18].</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Studio &amp; Inquiries</h4>
+        <p>Brgy. Rizal, La Paz, Iloilo City[cite: 9]</p>
+        <p>Open Daily: 9:00 AM &ndash; 5:00 PM[cite: 9]</p>
+        <p>Tel: <a href="tel:+63333203875">(033) 320 3875</a> / <a href="tel:09303239145">0930 323 9145</a>[cite: 2, 9]</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Gina's Photo &amp; Video Services. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Shared JavaScript -->
+  <script src="script.js?v=4"></script>
+</body>
+</html>
