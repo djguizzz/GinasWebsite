@@ -644,4 +644,65 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft') showLightboxImage(currentLightboxIndex - 1);
     });
   }
+
+  /* ================= 7. CONTACT PAGE: QUOTATION BUILDER (GMAIL & MESSENGER) ================= */
+  const quotationForm = document.getElementById('quotationForm');
+  const copyMessengerBtn = document.getElementById('copyMessengerBtn');
+  const formFeedback = document.getElementById('formFeedback');
+
+  if (quotationForm) {
+    function buildInquiryMessage() {
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const service = document.getElementById('serviceSelect').value;
+      const date = document.getElementById('eventDate').value || 'Flexible / To be discussed';
+      const venue = document.getElementById('eventVenue').value.trim() || 'In-Studio / Iloilo City';
+      const notes = document.getElementById('clientMessage').value.trim();
+
+      return {
+        service,
+        text:
+          `Hello Gina's Photo & Video Services,\n\n` +
+          `I would like to request a quotation for:\n` +
+          `• Service: ${service}\n` +
+          `• Preferred Date: ${date}\n` +
+          `• Location/Venue: ${venue}\n` +
+          `• Client Name: ${name}\n` +
+          `• Contact Number: ${phone}\n\n` +
+          `Additional Details:\n${notes}\n\nThank you!`
+      };
+    }
+
+    quotationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const inquiry = buildInquiryMessage();
+      const subject = encodeURIComponent(`Quotation Request: ${inquiry.service}`);
+      const body = encodeURIComponent(inquiry.text);
+
+      if (formFeedback) {
+        formFeedback.textContent = 'Opening your email app with your formatted quotation request...';
+      }
+      window.location.href = `mailto:gina.photovidservices@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    if (copyMessengerBtn) {
+      copyMessengerBtn.addEventListener('click', () => {
+        if (!quotationForm.checkValidity()) {
+          quotationForm.reportValidity();
+          return;
+        }
+        const inquiry = buildInquiryMessage();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(inquiry.text).then(() => {
+            if (formFeedback) {
+              formFeedback.textContent = 'Inquiry copied to clipboard! Opening Messenger—just paste and send.';
+            }
+            window.open('https://m.me/', '_blank', 'noopener,noreferrer');
+          });
+        } else if (formFeedback) {
+          formFeedback.textContent = 'Please copy your details and message us on Facebook Messenger.';
+        }
+      });
+    }
+  }
 });
