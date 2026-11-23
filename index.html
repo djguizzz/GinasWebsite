@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gina's Photo &amp; Video Services | Iloilo City</title>
+  <title>Gina's Photo &amp; Video Services | Editorial Studio &bull; Iloilo City</title>
   <!-- Google Fonts: Cinzel & Lora -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,25 +13,20 @@
 </head>
 <body>
 
+  <!-- ================= EDITORIAL TOP BAR ================= -->
+  <div class="editorial-topbar">
+    <div class="container topbar-inner">
+      <span>EST. JANUARY 30, 1989 &mdash; ILOILO CITY</span>
+      <span>BRGY. RIZAL, LA PAZ &bull; OPEN 9:00 AM &ndash; 5:00 PM</span>
+    </div>
+  </div>
+
   <!-- ================= HEADER / NAVBAR ================= -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
         <img src="Images/Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services">
       </a>
-
-      <div class="nav-controls">
-        <!-- Theme Toggle (Dark / Light Mode) -->
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle Dark/Light Theme">
-          <span class="theme-icon" id="themeIcon">&#9788;</span>
-          <span class="theme-label" id="themeLabel">Light</span>
-        </button>
-
-        <!-- Mobile Menu Button -->
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-          &#9776;
-        </button>
-      </div>
 
       <nav class="main-nav" id="mainNav">
         <ul class="nav-links">
@@ -41,89 +36,151 @@
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <a href="contact.html" class="btn btn-gold nav-cta">BOOK A SESSION</a>
+        <a href="contact.html" class="btn btn-primary nav-cta">Book a Session</a>
       </nav>
+
+      <div class="nav-controls">
+        <!-- Theme Toggle (Light / Dark Mode) -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+          <span class="theme-icon" id="themeIcon">&#9790;</span>
+          <span class="theme-label" id="themeLabel">Dark</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          &#9776;
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- ================= MAIN CONTENT ================= -->
   <main>
-    <!-- HERO CAROUSEL SLIDER -->
-    <section class="hero" id="home" aria-roledescription="carousel" aria-label="Featured photos">
-      <div class="slide active" aria-hidden="false">
-        <img class="slide-image" src="Images/example1-hd-upscale.jpg" alt="Family photography session" fetchpriority="high">
-        <div class="slide-content">
-          <span class="hero-eyebrow">Est. 1989 &bull; Iloilo City</span>
-          <h1>Capturing Stories<br>For Generations</h1>
-          <p>Portraits, school photos, events, and videos—captured with heart by a family that has told stories for generations.</p>
-          <div class="hero-actions">
-            <a href="contact.html" class="btn btn-gold">BOOK A SESSION</a>
-            <a href="services.html" class="btn btn-outline">OUR SERVICES</a>
+    <!-- EDITORIAL SPLIT HERO -->
+    <section class="editorial-hero" id="home">
+      <div class="container editorial-hero-grid">
+        <!-- Left Column: Typography & Story -->
+        <div class="editorial-copy">
+          <div class="editorial-meta">
+            <span class="meta-issue">VOL. 37 &bull; ARCHIVE &amp; STUDIO</span>
+            <span class="meta-line"></span>
+          </div>
+
+          <h1 class="editorial-title">
+            Capturing<br>
+            <em>Stories</em> For<br>
+            Generations.
+          </h1>
+
+          <p class="editorial-lead">
+            Portraits, school milestones, weddings, and heirloom films—crafted with quiet elegance by a family studio serving Iloilo City since 1989[cite: 2, 5, 6].
+          </p>
+
+          <div class="editorial-actions">
+            <a href="contact.html" class="btn btn-primary">Book a Session</a>
+            <a href="gallery.html" class="btn btn-editorial-outline">Explore Lookbook &rarr;</a>
+          </div>
+
+          <div class="editorial-footnotes">
+            <div class="footnote-item">
+              <strong>37+ Years</strong>
+              <span>Family-owned heritage[cite: 5, 6]</span>
+            </div>
+            <div class="footnote-item">
+              <strong>Studio &amp; On-Site</strong>
+              <span>Portraits, events &amp; IDs[cite: 2, 13]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Framed Interactive Lookbook Plate -->
+        <div class="editorial-showcase">
+          <div class="plate-frame">
+            <div class="plate-header">
+              <span id="plateNumber">PLATE 01 / 04</span>
+              <span id="plateCategory">FAMILY PORTRAITURE</span>
+            </div>
+
+            <div class="plate-image-wrap">
+              <img id="plateImage" src="Images/example1-hd-upscale.jpg" alt="Family portrait captured by Gina's Photo & Video Services">
+            </div>
+
+            <div class="plate-footer">
+              <p id="plateCaption">Generational portraits captured in natural light and timeless studio compositions.</p>
+              <div class="plate-controls">
+                <button type="button" class="plate-btn" id="prevPlate" aria-label="Previous plate">&larr;</button>
+                <button type="button" class="plate-btn" id="nextPlate" aria-label="Next plate">&rarr;</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="slide" aria-hidden="true">
-        <img class="slide-image" src="Images/example2-hd-upscale.jpg" alt="Studio and on-location portrait">
-        <div class="slide-content">
-          <span class="hero-eyebrow">Studio &amp; On-Location</span>
-          <h1>Portraits That<br>Feel Like Family</h1>
-          <p>Studio and on-location sessions for individuals, couples, and families of every size.</p>
-          <div class="hero-actions">
-            <a href="contact.html" class="btn btn-gold">BOOK A SESSION</a>
-            <a href="gallery.html" class="btn btn-outline">VIEW GALLERY</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide" aria-hidden="true">
-        <img class="slide-image" src="Images/example3-hd-upscale.jpg" alt="Graduation and school portraits">
-        <div class="slide-content">
-          <span class="hero-eyebrow">Academic Milestones</span>
-          <h1>School Photos &amp;<br>Graduations</h1>
-          <p>Class pictures, IDs, and graduation portraits delivered on time and done right.</p>
-          <div class="hero-actions">
-            <a href="contact.html" class="btn btn-gold">BOOK A SESSION</a>
-            <a href="services.html" class="btn btn-outline">OUR SERVICES</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide" aria-hidden="true">
-        <img class="slide-image" src="Images/example4-hd-upscale.jpg" alt="Wedding and event videography">
-        <div class="slide-content">
-          <span class="hero-eyebrow">Full Coverage</span>
-          <h1>Events &amp; Videos<br>Worth Replaying</h1>
-          <p>Weddings, birthdays, and celebrations filmed and edited so you can relive every moment.</p>
-          <div class="hero-actions">
-            <a href="contact.html" class="btn btn-gold">BOOK A SESSION</a>
-            <a href="gallery.html" class="btn btn-outline">VIEW GALLERY</a>
-          </div>
-        </div>
-      </div>
-
-      <button class="arrow prev" id="prev" type="button" aria-label="Previous slide">&#10094;</button>
-      <button class="arrow next" id="next" type="button" aria-label="Next slide">&#10095;</button>
-      <div class="dots" id="dots" aria-label="Choose a slide"></div>
     </section>
 
-    <!-- LEGACY & HIGHLIGHTS STRIP -->
-    <section class="home-highlights">
-      <div class="container highlights-grid">
-        <div class="highlight-card">
-          <span class="highlight-num">37+</span>
-          <h3>Years of Heritage</h3>
-          <p>Trusted by Ilonggo families and institutions since January 30, 1989.</p>
+    <!-- EDITORIAL MARQUEE / DISCIPLINES BAR -->
+    <section class="disciplines-strip" aria-label="Studio specialties">
+      <div class="container disciplines-list">
+        <span>01. Wedding &amp; Event Films</span>
+        <span class="sep">/</span>
+        <span>02. Studio &amp; Family Portraits</span>
+        <span class="sep">/</span>
+        <span>03. Graduations &amp; School IDs</span>
+        <span class="sep">/</span>
+        <span>04. Archival Photo Printing</span>
+      </div>
+    </section>
+
+    <!-- CURATED CONTACT SHEET / LOOKBOOK PREVIEW -->
+    <section class="contact-sheet-section">
+      <div class="container">
+        <div class="sheet-header">
+          <div>
+            <span class="eyebrow">Selected Works</span>
+            <h2>From the Contact Sheet</h2>
+          </div>
+          <a href="services.html" class="editorial-link">View All 10 Services &rarr;</a>
         </div>
-        <div class="highlight-card">
-          <span class="highlight-num">Photo &amp; Video</span>
-          <h3>Complete Coverage</h3>
-          <p>From studio portraits and ID pictures to full wedding and event films.</p>
-        </div>
-        <div class="highlight-card">
-          <span class="highlight-num">Iloilo City</span>
-          <h3>Studio &amp; On-Site</h3>
-          <p>Visit our studio or book our team anywhere within Iloilo City.</p>
+
+        <div class="contact-sheet-grid">
+          <article class="sheet-card" data-plate="0">
+            <div class="sheet-img-box">
+              <img src="Images/example1-hd-upscale.jpg" alt="Generational Family Portraits" loading="lazy">
+            </div>
+            <div class="sheet-meta">
+              <span>FIG. 01 &mdash; PORTRAITURE</span>
+              <h3>Family &amp; Studio Sessions</h3>
+            </div>
+          </article>
+
+          <article class="sheet-card" data-plate="1">
+            <div class="sheet-img-box">
+              <img src="Images/example2-hd-upscale.jpg" alt="On-location couple and group sessions" loading="lazy">
+            </div>
+            <div class="sheet-meta">
+              <span>FIG. 02 &mdash; ON-LOCATION</span>
+              <h3>Couples &amp; Gatherings</h3>
+            </div>
+          </article>
+
+          <article class="sheet-card" data-plate="2">
+            <div class="sheet-img-box">
+              <img src="Images/example3-hd-upscale.jpg" alt="School photos and graduations" loading="lazy">
+            </div>
+            <div class="sheet-meta">
+              <span>FIG. 03 &mdash; MILESTONES</span>
+              <h3>Graduations &amp; School IDs</h3>
+            </div>
+          </article>
+
+          <article class="sheet-card" data-plate="3">
+            <div class="sheet-img-box">
+              <img src="Images/example4-hd-upscale.jpg" alt="Weddings and celebration films" loading="lazy">
+            </div>
+            <div class="sheet-meta">
+              <span>FIG. 04 &mdash; CINEMA</span>
+              <h3>Weddings &amp; Event Videos</h3>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -133,12 +190,12 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services Logo" class="footer-logo">
-        <p>Turning moments into timeless memories with over 37 years of experience in photography and videography.</p>
+        <img src="Images/Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services Logo" class="footer-logo">
+        <p>Turning moments into timeless memories with over 37 years of experience in photography and videography[cite: 5, 18].</p>
       </div>
 
       <div class="footer-links">
-        <h4>Quick Links</h4>
+        <h4>Navigation</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
@@ -149,10 +206,10 @@
       </div>
 
       <div class="footer-contact">
-        <h4>Visit Our Studio</h4>
-        <p>Brgy. Rizal, La Paz, Iloilo City, Philippines</p>
-        <p>Open: 9:00 AM &ndash; 5:00 PM</p>
-        <p>Phone: <a href="tel:+63333203875">(033) 320 3875</a> / <a href="tel:09303239145">0930 323 9145</a></p>
+        <h4>Studio &amp; Inquiries</h4>
+        <p>Brgy. Rizal, La Paz, Iloilo City[cite: 9]</p>
+        <p>Open Daily: 9:00 AM &ndash; 5:00 PM[cite: 9]</p>
+        <p>Tel: <a href="tel:+63333203875">(033) 320 3875</a> / <a href="tel:09303239145">0930 323 9145</a>[cite: 2, 9]</p>
       </div>
     </div>
 
