@@ -164,4 +164,144 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kick off automatic 2.5s slideshow
     startAutoSlide();
   }
+
+  /* ================= 4. ABOUT PAGE INTERACTIONS ================= */
+  if (document.body.classList.contains('about-page')) {
+    // 4a. Staggered hero entrance
+    document.querySelectorAll('.hero-item').forEach((item) => {
+      const order = Number(item.style.getPropertyValue('--i')) || 0;
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(18px)';
+      item.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      item.style.transitionDelay = (0.1 + order * 0.12) + 's';
+
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'none';
+        })
+      );
+    });
+
+    // 4b. Scroll reveal for sections
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && reveals.length) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'none';
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      reveals.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(22px)';
+        el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+        revealObserver.observe(el);
+      });
+    }
+
+    // 4c. Dynamic years counter (since 1989)
+    const years = new Date().getFullYear() - 1989;
+    const yearsCount = document.getElementById('yearsCount');
+    const factYears = document.getElementById('factYears');
+    if (yearsCount) yearsCount.textContent = years;
+
+    if (factYears && 'IntersectionObserver' in window) {
+      const counter = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0].isIntersecting) return;
+          counter.disconnect();
+          let n = 0;
+          const step = setInterval(() => {
+            n++;
+            factYears.textContent = n + '+';
+            if (n >= years) clearInterval(step);
+          }, 35);
+        },
+        { threshold: 0.5 }
+      );
+      counter.observe(factYears);
+    }
+
+    // 4d. Interactive Tabs ("Our Clients" / "Events We Cover")
+    const tabs = Array.from(document.querySelectorAll('.about-tab'));
+    const panels = document.querySelectorAll('.about-tabpanel');
+
+    function showTab(tab) {
+      tabs.forEach((t) => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.tabIndex = -1;
+      });
+      panels.forEach((p) => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.tabIndex = 0;
+
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      if (panel) {
+        panel.classList.add('active');
+        panel.querySelectorAll('.about-tiles li').forEach((tile, i) => {
+          tile.style.opacity = '0';
+          tile.style.transform = 'translateY(10px)';
+          tile.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+          tile.style.transitionDelay = i * 0.05 + 's';
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              tile.style.opacity = '1';
+              tile.style.transform = 'none';
+            })
+          );
+        });
+      }
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => showTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        let next = null;
+        if (event.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+        if (event.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+        if (next) {
+          showTab(next);
+          next.focus();
+        }
+      });
+    });
+
+    // 4e. Subtle sideways watermark motion
+    const watermark = document.getElementById('serveWatermark');
+    const serveSection = document.getElementById('who-we-serve');
+    if (watermark && serveSection) {
+      window.addEventListener(
+        'scroll',
+        () => {
+          const box = serveSection.getBoundingClientRect();
+          if (box.top < window.innerHeight && box.bottom > 0) {
+            watermark.style.transform = 'translateX(' + box.top * 0.14 + 'px)';
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    // 4f. Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
 });
