@@ -305,18 +305,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ================= 5. SERVICES PAGE FILTER & SMOOTH SCROLL ================= */
+/* ================= 5. SERVICES PAGE: FILTER, SORT & DETAIL MODAL ================= */
+  const serviceGrid = document.getElementById('serviceGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const serviceCards = document.querySelectorAll('.service-card');
+  const serviceSort = document.getElementById('serviceSort');
+  const serviceModal = document.getElementById('serviceModal');
 
-  if (filterBtns.length && serviceCards.length) {
+  if (serviceGrid) {
+    const cards = Array.from(serviceGrid.querySelectorAll('.service-card'));
+
+    // 5a. Category Filter
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         filterBtns.forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
 
         const selected = btn.getAttribute('data-filter');
-        serviceCards.forEach((card) => {
+        cards.forEach((card) => {
           const category = card.getAttribute('data-category');
           if (selected === 'all' || category === selected) {
             card.classList.remove('is-hidden');
@@ -327,7 +332,194 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Smooth scroll for anchor links on Services page
+    // 5b. Sorting Order (Number 01-10, A-Z, Z-A)
+    if (serviceSort) {
+      serviceSort.addEventListener('change', () => {
+        const mode = serviceSort.value;
+        const sorted = [...cards].sort((a, b) => {
+          if (mode === 'az') {
+            const titleA = a.querySelector('h3').textContent.trim();
+            const titleB = b.querySelector('h3').textContent.trim();
+            return titleA.localeCompare(titleB);
+          }
+          if (mode === 'za') {
+            const titleA = a.querySelector('h3').textContent.trim();
+            const titleB = b.querySelector('h3').textContent.trim();
+            return titleB.localeCompare(titleA);
+          }
+          return Number(a.getAttribute('data-index')) - Number(b.getAttribute('data-index'));
+        });
+
+        sorted.forEach((card) => serviceGrid.appendChild(card));
+      });
+    }
+
+    // 5c. Service Detail Data (Explanation + 3 Sample Images per Service)
+    const serviceDetails = {
+      'event-coverage': {
+        num: 'SERVICE 01 • EVENTS',
+        title: 'Event Photography & Videography',
+        desc: 'Complete photo and video coverage for reunions, anniversaries, corporate gatherings, and community events across Iloilo City. We capture both key program highlights and natural candid moments.',
+        samples: [
+          'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=500&q=80',
+          'Images/example4-hd-upscale.jpg'
+        ]
+      },
+      'wedding-coverage': {
+        num: 'SERVICE 02 • WEDDINGS',
+        title: 'Wedding Coverage',
+        desc: 'Full-day wedding photography and cinematic highlight films—from pre-ceremony preparations and church vows to reception portraits and family group photos.',
+        samples: [
+          'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=500&q=80',
+          'Images/example1-hd-upscale.jpg'
+        ]
+      },
+      'birthday-debut': {
+        num: 'SERVICE 03 • CELEBRATIONS',
+        title: 'Birthday & Debut Coverage',
+        desc: 'Vibrant coverage for 18th debuts, kids’ parties, and milestone birthdays—including pre-debut portrait sessions, program highlights, and edited keepsake albums.',
+        samples: [
+          'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=500&q=80',
+          'Images/example2-hd-upscale.jpg'
+        ]
+      },
+      'graduation-photo': {
+        num: 'SERVICE 04 • ACADEMIC MILESTONES',
+        title: 'Graduation Photography',
+        desc: 'Studio toga portraits, creative graduation shoots, and family milestone photos—delivered with crisp lighting, retouching, and framing options.',
+        samples: [
+          'Images/example3-hd-upscale.jpg',
+          'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=500&q=80'
+        ]
+      },
+      'portrait-studio': {
+        num: 'SERVICE 05 • STUDIO & ON-SITE',
+        title: 'Portrait & Studio Photography',
+        desc: 'Comfortable indoor studio sessions in La Paz or on-location shoots for solo portraits, couples, maternity, and extended family reunions.',
+        samples: [
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80',
+          'Images/example1-hd-upscale.jpg',
+          'Images/example2-hd-upscale.jpg'
+        ]
+      },
+      'photo-video-editing': {
+        num: 'SERVICE 06 • POST-PRODUCTION',
+        title: 'Photo & Video Editing',
+        desc: 'Color grading, skin retouching, old photo restoration, and same-day or post-event video highlight editing tailored to your footage.',
+        samples: [
+          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500&q=80'
+        ]
+      },
+      'photo-printing': {
+        num: 'SERVICE 07 • ARCHIVAL PRINTS',
+        title: 'Photo Printing',
+        desc: 'High-resolution prints in wallet, 3R, 4R, 5R, 8R, and large wall-frame sizes printed on durable, fade-resistant photo paper.',
+        samples: [
+          'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=500&q=80'
+        ]
+      },
+      'id-pictures': {
+        num: 'SERVICE 08 • EXPRESS STUDIO',
+        title: 'ID Pictures',
+        desc: 'Fast, compliant 1x1, 2x2, passport, PRC, civil service, and school/company ID photos with neat formal attire overlays if needed.',
+        samples: [
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80'
+        ]
+      },
+      'funeral-photography': {
+        num: 'SERVICE 09 • MEMORIAL DOCUMENTATION',
+        title: 'Funeral Photography',
+        desc: 'Discreet, respectful photography and memorial tribute documentation to honor and preserve memories with loved ones.',
+        samples: [
+          'https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80'
+        ]
+      },
+      'copying-printing': {
+        num: 'SERVICE 10 • EVERYDAY ESSENTIALS',
+        title: 'Photo Copying & Printing',
+        desc: 'Walk-in document photocopying, scanning, and everyday photo/document printing services at our Brgy. Rizal, La Paz studio.',
+        samples: [
+          'https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=500&q=80',
+          'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=500&q=80'
+        ]
+      }
+    };
+
+    const modalNumber = document.getElementById('modalNumber');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalSamples = document.getElementById('modalSamples');
+    const modalGmailLink = document.getElementById('modalGmailLink');
+    const closeModalBtn = document.getElementById('closeServiceModal');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+
+    function openServiceModal(key) {
+      const data = serviceDetails[key];
+      if (!data || !serviceModal) return;
+
+      if (modalNumber) modalNumber.textContent = data.num;
+      if (modalTitle) modalTitle.textContent = data.title;
+      if (modalDescription) modalDescription.textContent = data.desc;
+
+      if (modalSamples) {
+        modalSamples.innerHTML = data.samples
+          .map((src, i) => `<img src="${src}" alt="${data.title} sample ${i + 1}" loading="lazy">`)
+          .join('');
+      }
+
+      if (modalGmailLink) {
+        const subject = encodeURIComponent(`Service Inquiry: ${data.title}`);
+        const body = encodeURIComponent(`Hello Gina's Photo & Video Services,\n\nI would like to inquire about your ${data.title} rates and availability.\n\nThank you!`);
+        modalGmailLink.href = `mailto:gina.photovidservices@gmail.com?subject=${subject}&body=${body}`;
+      }
+
+      serviceModal.classList.add('is-open');
+      serviceModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeServiceModal() {
+      if (!serviceModal) return;
+      serviceModal.classList.remove('is-open');
+      serviceModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        openServiceModal(card.getAttribute('data-service'));
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openServiceModal(card.getAttribute('data-service'));
+        }
+      });
+    });
+
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeServiceModal);
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeServiceModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && serviceModal && serviceModal.classList.contains('is-open')) {
+        closeServiceModal();
+      }
+    });
+
+    // 5d. Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (event) => {
         const target = document.querySelector(link.getAttribute('href'));
