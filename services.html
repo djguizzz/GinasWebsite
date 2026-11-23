@@ -1,1 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services &amp; Packages | Gina's Photo &amp; Video Services &bull; Iloilo City</title>
+  <!-- Google Fonts: Cinzel & Lora -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=8">
+</head>
+<body class="services-page">
 
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="Images/Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services">
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Book a Session</a>
+      </nav>
+
+      <div class="nav-controls">
+        <!-- Theme Toggle (Light / Dark Mode) -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+          <span class="theme-icon" id="themeIcon">&#9790;</span>
+          <span class="theme-label" id="themeLabel">Dark</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          &#9776;
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <!-- ========== EDITORIAL SERVICES HERO ========== -->
+    <section class="services-hero">
+      <div class="container services-hero-grid">
+        <div>
+          <div class="editorial-meta">
+            <span class="meta-issue">CATALOGUE &bull; STUDIO &amp; ON-LOCATION</span>
+            <span class="meta-line"></span>
+          </div>
+          <h1>
+            Services &amp;<br>
+            <em>Curated Packages.</em>
+          </h1>
+          <p class="hero-copy">
+            From once-in-a-lifetime celebrations to everyday studio essentials, we help you preserve every moment and make every image count[cite: 11].
+          </p>
+          <div class="editorial-actions">
+            <a href="#our-services" class="btn btn-primary">Explore Services &darr;</a>
+            <a href="#packages" class="btn btn-editorial-outline">View Packages</a>
+          </div>
+        </div>
+
+        <div class="services-hero-note">
+          <span class="eyebrow">Quotation &amp; Booking</span>
+          <p>Every event and studio request is unique. Browse our 10 core services below or inquire for a customized quotation tailored to your schedule and coverage needs[cite: 11, 14].</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 10 SERVICES DIRECTORY ========== -->
+    <section class="services-section" id="our-services">
+      <div class="container">
+        <div class="sheet-header">
+          <div>
+            <span class="eyebrow">01 &mdash; How We Can Help</span>
+            <h2>Made for Your Moments</h2>
+          </div>
+
+          <!-- Interactive Service Filter Pills -->
+          <div class="service-filters" role="group" aria-label="Filter services by category">
+            <button type="button" class="filter-btn active" data-filter="all">All (10)</button>
+            <button type="button" class="filter-btn" data-filter="events">Events &amp; Weddings</button>
+            <button type="button" class="filter-btn" data-filter="portraits">Portraits &amp; Graduations</button>
+            <button type="button" class="filter-btn" data-filter="prints">Prints, IDs &amp; Editing</button>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card" data-category="events">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Guests celebrating together at an event" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">01</span>
+                <span class="service-tag">Events</span>
+              </div>
+              <h3>Event Photography &amp; Videography</h3>
+              <p>Relive the highlights, candid moments, and details that make your event yours[cite: 11].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="events">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Wedding couple celebrating outdoors" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">02</span>
+                <span class="service-tag">Events</span>
+              </div>
+              <h3>Wedding Coverage</h3>
+              <p>Thoughtful photo and video coverage of your celebration, from meaningful details to the big moments[cite: 12].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="events">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Colorful birthday celebration decorations" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">03</span>
+                <span class="service-tag">Events</span>
+              </div>
+              <h3>Birthday &amp; Debut Coverage</h3>
+              <p>Keep the energy, people, and once-in-a-lifetime memories of your special day[cite: 12].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="portraits">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Graduates celebrating their achievement" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">04</span>
+                <span class="service-tag">Portraits</span>
+              </div>
+              <h3>Graduation Photography</h3>
+              <p>Celebrate your achievement with portraits and keepsake photos with family and friends[cite: 12].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="portraits">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Studio portrait of a woman" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">05</span>
+                <span class="service-tag">Portraits</span>
+              </div>
+              <h3>Portrait &amp; Studio Photography</h3>
+              <p>Individual, family, and other portrait sessions in a comfortable studio setting[cite: 12].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="prints">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Creative editing workspace with a laptop" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">06</span>
+                <span class="service-tag">Post-Production</span>
+              </div>
+              <h3>Photo &amp; Video Editing</h3>
+              <p>Give your photos and footage a polished finish with editing tailored to your needs[cite: 13].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="prints">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Camera ready to capture a photograph" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">07</span>
+                <span class="service-tag">Prints</span>
+              </div>
+              <h3>Photo Printing</h3>
+              <p>Turn your favorite digital images into printed keepsakes in the size you need[cite: 13].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="prints">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Head-and-shoulders portrait suitable for an ID photo" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">08</span>
+                <span class="service-tag">Studio</span>
+              </div>
+              <h3>ID Pictures</h3>
+              <p>Get ID photos prepared for your document or application requirements[cite: 13].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="events">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="White flowers arranged in a peaceful setting" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">09</span>
+                <span class="service-tag">Events</span>
+              </div>
+              <h3>Funeral Photography</h3>
+              <p>Respectful documentation of a gathering to honor and remember a loved one[cite: 13].</p>
+            </div>
+          </article>
+
+          <article class="service-card" data-category="prints">
+            <div class="service-img-wrap">
+              <img class="service-image" src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Printed pages and stationery on a desk" loading="lazy">
+            </div>
+            <div class="service-content">
+              <div class="service-top">
+                <span class="service-number">10</span>
+                <span class="service-tag">Prints</span>
+              </div>
+              <h3>Photo Copying &amp; Printing</h3>
+              <p>Copy and print documents and photos for everyday personal needs[cite: 14].</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PACKAGES SECTION ========== -->
+    <section class="packages-section" id="packages">
+      <div class="container packages-layout">
+        <div class="packages-intro">
+          <span class="eyebrow">02 &mdash; Flexible Options</span>
+          <h2>A Package That Works For You</h2>
+          <p>Every occasion and project is different. Choose a ready-made package or let us tailor one around the coverage and services you need[cite: 14].</p>
+          <p class="pricing-note">Packages are available in fixed and customizable options. Pricing is provided by quotation&mdash;contact us with your requirements for details[cite: 14].</p>
+          <a href="contact.html" class="btn btn-primary">Request a Quotation</a>
+        </div>
+
+        <div class="package-options">
+          <article class="package-card">
+            <span class="package-label">Option 01 &bull; Ready to Choose</span>
+            <h3>Fixed Packages</h3>
+            <p>Explore a set package for your occasion and tell us which option you're interested in[cite: 14].</p>
+            <a href="contact.html" class="editorial-link">Ask About Fixed Packages &rarr;</a>
+          </article>
+
+          <article class="package-card package-card-featured">
+            <span class="package-label">Option 02 &bull; Made Around You</span>
+            <h3>Custom Packages</h3>
+            <p>Share your event, preferred services, and coverage needs so we can suggest a tailored option[cite: 14].</p>
+            <a href="contact.html" class="editorial-link">Build a Custom Package &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QUOTATION CALLOUT BANNER ========== -->
+    <section class="contact-banner">
+      <div class="container contact-banner-content">
+        <div>
+          <span class="eyebrow">Let's Make It Memorable</span>
+          <h2>Have something in mind?</h2>
+          <p>Tell us what you need, and we'll get back to you with availability and a quotation[cite: 15].</p>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="Images/Gina%27s%20logo.jpg" alt="Gina's Photo &amp; Video Services Logo" class="footer-logo">
+        <p>Turning moments into timeless memories with over 37 years of experience in photography and videography[cite: 5, 18].</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Studio &amp; Inquiries</h4>
+        <p>Brgy. Rizal, La Paz, Iloilo City[cite: 9]</p>
+        <p>Open Daily: 9:00 AM &ndash; 5:00 PM[cite: 9]</p>
+        <p>Tel: <a href="tel:+63333203875">(033) 320 3875</a> / <a href="tel:09303239145">0930 323 9145</a>[cite: 2, 9]</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Gina's Photo &amp; Video Services. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Shared JavaScript -->
+  <script src="script.js?v=8"></script>
+</body>
+</html>
