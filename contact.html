@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <!-- Shared Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body class="contact-page">
 
@@ -28,7 +28,7 @@
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
-        <a href="#inquiry-form" class="btn btn-primary nav-cta">Book a Session</a>
+        <a href="services.html" class="btn btn-primary nav-cta">Explore Services</a>
       </nav>
 
       <div class="nav-controls">
@@ -46,175 +46,93 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT ================= -->
+  <!-- ================= MAIN CONTENT (SINGLE-SCREEN SPLIT) ================= -->
   <main>
-    <!-- ========== EDITORIAL CONTACT HERO ========== -->
-    <section class="contact-hero">
-      <div class="container contact-hero-inner">
-        <div class="editorial-meta">
-          <span class="meta-issue">STUDIO DIRECTORY &bull; LA PAZ, ILOILO CITY</span>
-          <span class="meta-line"></span>
-        </div>
+    <section class="contact-onepage">
+      <div class="container contact-split-grid">
+        <!-- Left Side: Title, Direct App Links & Studio Directory -->
+        <div class="contact-left-panel">
+          <div class="editorial-meta">
+            <span class="meta-issue">STUDIO DIRECTORY &bull; ILOILO CITY</span>
+            <span class="meta-line"></span>
+          </div>
 
-        <h1>
-          Get in Touch &amp;<br>
-          <em>Visit Our Studio.</em>
-        </h1>
+          <h1>
+            Get in Touch &amp;<br>
+            <em>Visit Our Studio.</em>
+          </h1>
 
-        <p class="contact-lead">
-          Have an upcoming wedding, graduation, family portrait, or studio print request? Reach us directly via phone, Messenger, email, or drop by our studio in Brgy. Rizal, La Paz[cite: 8, 9].
-        </p>
+          <p class="contact-lead">
+            Reach us directly through your preferred app or drop by our studio for inquiries, bookings, and quotations.
+          </p>
 
-        <!-- Quick Direct App Bar -->
-        <div class="contact-quick-apps">
-          <a href="https://www.facebook.com/search/top?q=Gina%27s%20Photo%20%26%20Video%20Services" target="_blank" rel="noopener noreferrer" class="quick-app-pill">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
-            <span>Facebook Page</span>
-          </a>
-          <a href="https://m.me/" target="_blank" rel="noopener noreferrer" class="quick-app-pill">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.5 5.43 3.84 7.08V22l3.52-1.93c.85.24 1.73.37 2.64.37 5.52 0 10-4.03 10-9S17.52 2 12 2zm1.06 12.11-2.55-2.72-4.97 2.72 5.47-5.81 2.61 2.72 4.91-2.72-5.47 5.81z"/></svg>
-            <span>Messenger</span>
-          </a>
-          <a href="mailto:gina.photovidservices@gmail.com" class="quick-app-pill">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <span>gina.photovidservices@gmail.com</span>
-          </a>
-          <a href="tel:09303239145" class="quick-app-pill">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            <span>0930 323 9145</span>
-          </a>
-        </div>
-      </div>
-    </section>
+          <!-- Direct App Buttons -->
+          <div class="contact-quick-apps">
+            <a href="https://www.facebook.com/search/top?q=Gina%27s%20Photo%20%26%20Video%20Services" target="_blank" rel="noopener noreferrer" class="quick-app-pill">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+              <span>Facebook</span>
+            </a>
+            <a href="https://m.me/" target="_blank" rel="noopener noreferrer" class="quick-app-pill">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.5 5.43 3.84 7.08V22l3.52-1.93c.85.24 1.73.37 2.64.37 5.52 0 10-4.03 10-9S17.52 2 12 2zm1.06 12.11-2.55-2.72-4.97 2.72 5.47-5.81 2.61 2.72 4.91-2.72-5.47 5.81z"/></svg>
+              <span>Messenger</span>
+            </a>
+            <a href="mailto:gina.photovidservices@gmail.com" class="quick-app-pill">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span>Gmail</span>
+            </a>
+            <a href="tel:09303239145" class="quick-app-pill">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>Call Studio</span>
+            </a>
+          </div>
 
-    <!-- ========== STUDIO DETAILS + QUOTATION BUILDER ========== -->
-    <section class="contact-main-section" id="inquiry-form">
-      <div class="container contact-two-col">
-        <!-- Left Column: Studio Info & Booking Policies -->
-        <div class="contact-details-col">
-          <div class="contact-info-block">
-            <span class="eyebrow">01 &mdash; Studio Information</span>
-            <h2>Where to Find Us</h2>
-
-            <dl class="studio-dl">
+          <!-- Compact Studio Information Grid -->
+          <dl class="studio-compact-grid">
+            <div>
               <dt>Studio Address</dt>
-              <dd>Brgy. Rizal, La Paz, Iloilo City[cite: 9]</dd>
+              <dd>Brgy. Rizal, La Paz, Iloilo City</dd>
+            </div>
 
-              <dt>Operating Hours</dt>
-              <dd>Open Daily: 9:00 AM &ndash; 5:00 PM[cite: 9]</dd>
+            <div>
+              <dt>Open Hours</dt>
+              <dd>Daily, 9:00 AM &ndash; 5:00 PM</dd>
+            </div>
 
-              <dt>Landline &amp; Mobile</dt>
+            <div>
+              <dt>Phone &amp; Mobile</dt>
               <dd>
-                <a href="tel:+63333203875">(033) 320 3875</a> &bull;
-                <a href="tel:09303239145">0930 323 9145</a> &bull;
-                <a href="tel:09483277158">0948 327 7158</a>[cite: 2, 9]
+                <a href="tel:+63333203875">(033) 320 3875</a> /
+                <a href="tel:09303239145">0930 323 9145</a> /
+                <a href="tel:09483277158">0948 327 7158</a>
               </dd>
+            </div>
 
-              <dt>Email Address</dt>
-              <dd><a href="mailto:gina.photovidservices@gmail.com">gina.photovidservices@gmail.com</a>[cite: 9]</dd>
-
-              <dt>Service Coverage</dt>
-              <dd>Within Iloilo City (Studio &amp; On-Location)[cite: 8]</dd>
-            </dl>
-          </div>
-
-          <div class="contact-info-block">
-            <span class="eyebrow">02 &mdash; Booking Guidelines</span>
-            <h3>Before You Book</h3>
-            <ul class="booking-notes-list">
-              <li><strong>Appointments &amp; Walk-Ins:</strong> Both are welcome; advance booking is subject to date availability[cite: 8].</li>
-              <li><strong>Reservation Fee:</strong> A down payment is required to lock in event dates[cite: 8].</li>
-              <li><strong>Accepted Payments:</strong> Cash, GCash, and Bank Transfer[cite: 8].</li>
-              <li><strong>Custom Quotations:</strong> Rates depend on coverage hours and deliverables&mdash;request a quote using the form[cite: 8, 14].</li>
-            </ul>
-          </div>
+            <div>
+              <dt>Email &amp; Payments</dt>
+              <dd>
+                <a href="mailto:gina.photovidservices@gmail.com">gina.photovidservices@gmail.com</a><br>
+                <span class="muted-note">Cash, GCash, &amp; Bank Transfer &bull; Appointments &amp; Walk-ins</span>
+              </dd>
+            </div>
+          </dl>
         </div>
 
-        <!-- Right Column: No-Login Quotation Message Builder -->
-        <div class="contact-form-card">
-          <span class="eyebrow">03 &mdash; Quick Quotation Builder</span>
-          <h2>Prepare Your Inquiry</h2>
-          <p class="form-sub">Fill in your event details below and send directly via Gmail or copy your formatted inquiry to paste into Facebook Messenger.</p>
-
-          <form id="quotationForm" class="editorial-form">
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="clientName">Full Name *</label>
-                <input type="text" id="clientName" name="clientName" placeholder="e.g. Maria Clara" required>
-              </div>
-
-              <div class="form-group">
-                <label for="clientPhone">Mobile / Contact Number *</label>
-                <input type="tel" id="clientPhone" name="clientPhone" placeholder="e.g. 0917 123 4567" required>
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="serviceSelect">Service Needed *</label>
-                <select id="serviceSelect" name="serviceSelect" required>
-                  <option value="Event Photography & Videography">01. Event Photography &amp; Videography</option>
-                  <option value="Wedding Coverage">02. Wedding Coverage</option>
-                  <option value="Birthday & Debut Coverage">03. Birthday &amp; Debut Coverage</option>
-                  <option value="Graduation Photography">04. Graduation Photography</option>
-                  <option value="Portrait & Studio Photography">05. Portrait &amp; Studio Photography</option>
-                  <option value="Photo & Video Editing">06. Photo &amp; Video Editing</option>
-                  <option value="Photo Printing">07. Photo Printing</option>
-                  <option value="ID Pictures">08. ID Pictures</option>
-                  <option value="Funeral Photography">09. Funeral Photography</option>
-                  <option value="Photo Copying & Printing">10. Photo Copying &amp; Printing</option>
-                  <option value="Fixed or Custom Package">Fixed / Custom Package Inquiry</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="eventDate">Preferred Date</label>
-                <input type="date" id="eventDate" name="eventDate">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="eventVenue">Location / Venue (within Iloilo City)</label>
-              <input type="text" id="eventVenue" name="eventVenue" placeholder="e.g. In-Studio (La Paz) or Jaro Cathedral">
-            </div>
-
-            <div class="form-group">
-              <label for="clientMessage">Additional Details &amp; Notes *</label>
-              <textarea id="clientMessage" name="clientMessage" rows="4" placeholder="Tell us about your occasion, estimated hours, or print sizes needed..." required></textarea>
-            </div>
-
-            <div class="form-submit-actions">
-              <button type="submit" class="btn btn-primary">Send via Gmail App &rarr;</button>
-              <button type="button" id="copyMessengerBtn" class="btn btn-editorial-outline">Copy for Messenger</button>
-            </div>
-
-            <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== EMBEDDED GOOGLE MAP SECTION ========== -->
-    <section class="contact-map-section" id="studio-map">
-      <div class="container">
-        <div class="sheet-header">
-          <div>
-            <span class="eyebrow">04 &mdash; Interactive Map</span>
-            <h2>Brgy. Rizal, La Paz, Iloilo City</h2>
+        <!-- Right Side: Embedded Google Map -->
+        <div class="contact-right-map">
+          <div class="map-card-header">
+            <span>LOCATION &bull; BRGY. RIZAL, LA PAZ</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Brgy.+Rizal,+La+Paz,+Iloilo+City" target="_blank" rel="noopener noreferrer">Open in Maps &rarr;</a>
           </div>
-          <a href="https://www.google.com/maps/search/?api=1&query=Brgy.+Rizal,+La+Paz,+Iloilo+City" target="_blank" rel="noopener noreferrer" class="editorial-link">
-            Open in Google Maps &rarr;
-          </a>
-        </div>
 
-        <div class="map-frame-wrapper">
-          <iframe
-            title="Map showing Brgy. Rizal, La Paz, Iloilo City"
-            src="https://maps.google.com/maps?q=Brgy.%20Rizal,%20La%20Paz,%20Iloilo%20City,%20Philippines&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
+          <div class="map-frame-wrapper">
+            <iframe
+              title="Map showing Brgy. Rizal, La Paz, Iloilo City"
+              src="https://maps.google.com/maps?q=Brgy.%20Rizal,%20La%20Paz,%20Iloilo%20City,%20Philippines&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -253,6 +171,6 @@
   </footer>
 
   <!-- Shared JavaScript -->
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>
