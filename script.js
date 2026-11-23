@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Load saved theme (defaults to light)
   const savedTheme = localStorage.getItem('ginas-editorial-theme') || 'light';
   applyTheme(savedTheme);
 
@@ -55,8 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ================= 3. EDITORIAL LOOKBOOK PLATE SWITCHER ================= */
+  /* ================= 3. EDITORIAL LOOKBOOK AUTO-SLIDESHOW (2.5s) ================= */
   const plateImage = document.getElementById('plateImage');
+  const plateFrame = document.getElementById('plateFrame');
+
   if (plateImage) {
     const plates = [
       {
@@ -90,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentPlate = 0;
+    let slideTimer = null;
+
     const plateNumber = document.getElementById('plateNumber');
     const plateCategory = document.getElementById('plateCategory');
     const plateCaption = document.getElementById('plateCaption');
@@ -111,12 +114,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 150);
     }
 
+    function startAutoSlide() {
+      stopAutoSlide();
+      slideTimer = setInterval(() => {
+        renderPlate(currentPlate + 1);
+      }, 2500);
+    }
+
+    function stopAutoSlide() {
+      if (slideTimer) {
+        clearInterval(slideTimer);
+        slideTimer = null;
+      }
+    }
+
     if (prevPlate) {
-      prevPlate.addEventListener('click', () => renderPlate(currentPlate - 1));
+      prevPlate.addEventListener('click', () => {
+        renderPlate(currentPlate - 1);
+        startAutoSlide();
+      });
     }
 
     if (nextPlate) {
-      nextPlate.addEventListener('click', () => renderPlate(currentPlate + 1));
+      nextPlate.addEventListener('click', () => {
+        renderPlate(currentPlate + 1);
+        startAutoSlide();
+      });
+    }
+
+    // Pause slideshow while hovering over the photo frame
+    if (plateFrame) {
+      plateFrame.addEventListener('mouseenter', stopAutoSlide);
+      plateFrame.addEventListener('mouseleave', startAutoSlide);
     }
 
     // Contact sheet cards load the selected photo into the top Lookbook Plate
@@ -124,11 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('click', () => {
         const idx = Number(card.getAttribute('data-plate'));
         renderPlate(idx);
+        startAutoSlide();
         const homeSection = document.getElementById('home');
         if (homeSection) {
           homeSection.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
+
+    // Kick off automatic 2.5s slideshow
+    startAutoSlide();
   }
 });
