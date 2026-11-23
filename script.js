@@ -523,4 +523,125 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  /* ================= 6. GALLERY PAGE: FILTER, VIEW TOGGLE & LIGHTBOX ================= */
+  const galleryGrid = document.getElementById('galleryGrid');
+  const galFilterBtns = document.querySelectorAll('.gal-filter-btn');
+  const viewMasonry = document.getElementById('viewMasonry');
+  const viewUniform = document.getElementById('viewUniform');
+  const galleryLightbox = document.getElementById('galleryLightbox');
+
+  if (galleryGrid) {
+    const galleryItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+    let visibleItems = [...galleryItems];
+    let currentLightboxIndex = 0;
+
+    // 6a. Category Filter
+    galFilterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        galFilterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        galleryItems.forEach((item) => {
+          const cat = item.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            item.classList.remove('is-hidden');
+          } else {
+            item.classList.add('is-hidden');
+          }
+        });
+
+        visibleItems = galleryItems.filter((item) => !item.classList.contains('is-hidden'));
+      });
+    });
+
+    // 6b. Masonry vs Uniform Grid View Switcher
+    if (viewMasonry && viewUniform) {
+      viewMasonry.addEventListener('click', () => {
+        galleryGrid.classList.remove('is-uniform');
+        viewMasonry.classList.add('active');
+        viewUniform.classList.remove('active');
+      });
+
+      viewUniform.addEventListener('click', () => {
+        galleryGrid.classList.add('is-uniform');
+        viewUniform.classList.add('active');
+        viewMasonry.classList.remove('active');
+      });
+    }
+
+    // 6c. Fullscreen Lightbox Viewer
+    const lbImage = document.getElementById('lightboxImage');
+    const lbCategory = document.getElementById('lightboxCategory');
+    const lbTitle = document.getElementById('lightboxTitle');
+    const lbDesc = document.getElementById('lightboxDesc');
+    const lbCounter = document.getElementById('lightboxCounter');
+    const lbClose = document.getElementById('lightboxClose');
+    const lbBackdrop = document.getElementById('lightboxBackdrop');
+    const lbPrev = document.getElementById('lightboxPrev');
+    const lbNext = document.getElementById('lightboxNext');
+
+    function showLightboxImage(idx) {
+      if (!visibleItems.length || !galleryLightbox) return;
+      currentLightboxIndex = (idx + visibleItems.length) % visibleItems.length;
+      const item = visibleItems[currentLightboxIndex];
+      const img = item.querySelector('img');
+      const tag = item.querySelector('.gal-tag');
+
+      if (lbImage && img) {
+        lbImage.src = img.src;
+        lbImage.alt = img.alt;
+      }
+      if (lbCategory && tag) lbCategory.textContent = tag.textContent;
+      if (lbTitle) lbTitle.textContent = item.getAttribute('data-title') || '';
+      if (lbDesc) lbDesc.textContent = item.getAttribute('data-caption') || '';
+      if (lbCounter) {
+        const cur = String(currentLightboxIndex + 1).padStart(2, '0');
+        const tot = String(visibleItems.length).padStart(2, '0');
+        lbCounter.textContent = `${cur} / ${tot}`;
+      }
+    }
+
+    function openLightbox(item) {
+      visibleItems = galleryItems.filter((el) => !el.classList.contains('is-hidden'));
+      const idx = visibleItems.indexOf(item);
+      showLightboxImage(idx >= 0 ? idx : 0);
+
+      galleryLightbox.classList.add('is-open');
+      galleryLightbox.style.display = 'flex';
+      galleryLightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!galleryLightbox) return;
+      galleryLightbox.classList.remove('is-open');
+      galleryLightbox.style.display = 'none';
+      galleryLightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(item);
+        }
+      });
+    });
+
+    if (lbPrev) lbPrev.addEventListener('click', () => showLightboxImage(currentLightboxIndex - 1));
+    if (lbNext) lbNext.addEventListener('click', () => showLightboxImage(currentLightboxIndex + 1));
+    if (lbClose) lbClose.addEventListener('click', closeLightbox);
+    if (lbBackdrop) lbBackdrop.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (!galleryLightbox || !galleryLightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showLightboxImage(currentLightboxIndex + 1);
+      if (e.key === 'ArrowLeft') showLightboxImage(currentLightboxIndex - 1);
+    });
+  }
 });
