@@ -620,3 +620,387 @@ main {
     display: none;
   }
 }
+
+/* ================= ABOUT PAGE (EDITORIAL LOOKBOOK) ================= */
+.about-hero {
+  padding: 2.25rem 0 3.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-script {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  color: var(--accent-gold);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.about-hero-text h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.7rem);
+  line-height: 1.08;
+  margin-bottom: 1.1rem;
+}
+
+.about-hero-text h1 em {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-gold);
+}
+
+.about-hero-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin-bottom: 1.65rem;
+}
+
+.about-hero-photo {
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+}
+
+.about-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Our Story */
+.about-story {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.15fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.about-story h2 {
+  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+  line-height: 1.14;
+  margin-bottom: 1rem;
+}
+
+.about-line {
+  display: block;
+  width: 64px;
+  height: 2px;
+  background-color: var(--accent-gold);
+}
+
+.about-story-text p {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+}
+
+.about-story-text strong {
+  color: var(--text-primary);
+}
+
+.about-story-text p + p {
+  margin-top: 1.15rem;
+}
+
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-facts li {
+  padding: 1.75rem 1rem;
+  text-align: center;
+}
+
+.about-facts li + li {
+  border-left: 1px solid var(--border-hairline);
+}
+
+.about-fact-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 0.25rem;
+}
+
+.about-fact-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Who We Serve */
+.about-serve {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-serve-watermark {
+  position: absolute;
+  right: -10px;
+  bottom: -24px;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border-hairline);
+  font: 700 clamp(4.5rem, 12vw, 10rem)/1 var(--font-heading);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-serve-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.about-serve-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-serve-head h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.12;
+}
+
+.about-tabs {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.about-tab {
+  padding: 0.65rem 1.25rem;
+  border: 1px solid var(--border-hairline);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.about-tab:hover {
+  border-color: var(--accent-gold);
+}
+
+.about-tab.active {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: var(--btn-bg);
+}
+
+.about-tabpanel {
+  display: none;
+}
+
+.about-tabpanel.active {
+  display: block;
+}
+
+.about-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  list-style: none;
+}
+
+.about-tiles li {
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-hairline);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.about-tiles li:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-gold);
+}
+
+.about-tile-num {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+}
+
+.about-tile-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.about-serve-note {
+  margin-top: 1.75rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.about-pin {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-gold);
+}
+
+/* Booking & Visit Directory */
+.about-visit {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.about-visit-card {
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-hairline);
+}
+
+.about-visit-card h3 {
+  font-size: 1.25rem;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.about-visit-card dl {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 0.9rem 1rem;
+}
+
+.about-visit-card dt {
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  padding-top: 2px;
+}
+
+.about-visit-card dd {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.about-visit-card dd a {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-hairline);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.about-visit-card dd a:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+/* About CTA */
+.about-cta {
+  padding: 4.5rem 0;
+  text-align: center;
+}
+
+.about-cta-inner {
+  max-width: 640px;
+}
+
+.about-cta h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  line-height: 1.12;
+  margin: 0.35rem 0 0.85rem;
+}
+
+.about-cta p {
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.about-cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* About Responsive */
+@media (max-width: 960px) {
+  .about-hero-grid,
+  .about-story-grid,
+  .about-visit-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .about-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts li + li {
+    border-left: none;
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .about-tiles {
+    grid-template-columns: 1fr;
+  }
+
+  .about-visit-card dl {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .about-visit-card dd {
+    margin-bottom: 0.75rem;
+  }
+}
